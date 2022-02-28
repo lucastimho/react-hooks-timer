@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 const caculateTimeLeft = () => {
   let year = new Date().getFullYear();
@@ -14,6 +15,13 @@ const caculateTimeLeft = () => {
   }
   return timeLeft;
 };
+const [timeLeft, setTimeLeft] = useState(caculateTimeLeft());
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setTimeLeft(caculateTimeLeft());
+  }, 1000);
+  return () => clearTimeout(timer);
+});
 function App() {
   return <div></div>;
 }
