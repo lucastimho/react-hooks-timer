@@ -16,6 +16,7 @@ const caculateTimeLeft = () => {
   return timeLeft;
 };
 const [timeLeft, setTimeLeft] = useState(caculateTimeLeft());
+const [year] = useState(new Date().getFullYear());
 useEffect(() => {
   const timer = setTimeout(() => {
     setTimeLeft(caculateTimeLeft());
@@ -25,7 +26,13 @@ useEffect(() => {
 const timerComponents = [];
 Object.keys(timeLeft).forEach((interval) => {
   if (!timeLeft[interval]) {
-    return;
+    return (
+      <div>
+        <h1>Hacktoberfest {year} Countdown</h1>
+        <h2>With React Hooks!</h2>
+        {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      </div>
+    );
   }
   timerComponents.push(
     <span>
