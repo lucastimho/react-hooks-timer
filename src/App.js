@@ -22,6 +22,17 @@ useEffect(() => {
   }, 1000);
   return () => clearTimeout(timer);
 });
+const timerComponents = [];
+Object.keys(timeLeft).forEach((interval) => {
+  if (!timeLeft[interval]) {
+    return;
+  }
+  timerComponents.push(
+    <span>
+      {timeLeft[interval]} {interval}{" "}
+    </span>
+  );
+});
 function App() {
   return <div></div>;
 }
